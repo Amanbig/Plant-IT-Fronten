@@ -3,8 +3,13 @@ import { FaBox } from 'react-icons/fa';
 import ProductsCard from '../components/ProductsCard';
 import Footer from '../components/Footer';
 import Navbar from '../components/Nav';
+import { useNavigate } from 'react-router-dom';
 
 export default function Homepage() {
+  const navigate = useNavigate();
+  const handleExploreClick = () => {
+    navigate('/login'); 
+  };
   return (
     <div>
       <Navbar/>
@@ -23,6 +28,7 @@ export default function Homepage() {
           <button
             type="submit"
             className="bg-gray-800 hover:bg-gray-700 text-white rounded-md text-center p-2 w-40 font-bold text-xl border border-black m-4"
+            onClick={handleExploreClick}
           >
             Explore →
           </button>

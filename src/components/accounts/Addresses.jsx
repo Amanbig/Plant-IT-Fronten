@@ -14,26 +14,27 @@ export default function Addresses() {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <h2 className="text-2xl font-semibold mb-4">Addresses</h2>
-      <div className="mb-4">
+      <div className="flex flex-col md:flex-row gap-2 mb-4">
         <input
           type="text"
           value={newAddress}
           onChange={(e) => setNewAddress(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-gray-300 rounded w-full md:w-auto"
           placeholder="Enter new address"
         />
         <button
+          type="button"
           onClick={handleAddAddress}
-          className="bg-blue-500 text-white p-2 rounded ml-2"
+          className="bg-gray-800 hover:bg-gray-700 text-white rounded-md p-3 w-full md:w-auto"
         >
-          Add Address
+          Add
         </button>
       </div>
       <ul className="space-y-2">
         {addresses.map((address) => (
-          <li key={address.id} className="p-2 border border-gray-300 rounded">
+          <li key={address.id} className="p-2 border border-gray-300 rounded bg-white shadow-sm">
             {address.address}
           </li>
         ))}

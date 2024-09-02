@@ -17,41 +17,44 @@ export default function PasswordManager() {
   };
 
   return (
-    <div>
+    <div className="p-4">
       <h2 className="text-2xl font-semibold mb-4">Password Manager</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-gray-700">Current Password:</label>
+        <div className="flex flex-col">
+          <label className="text-lg text-gray-700 mb-2">Current Password:</label>
           <input
             type="password"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+            placeholder="Enter current password"
           />
         </div>
-        <div>
-          <label className="block text-gray-700">New Password:</label>
+        <div className="flex flex-col">
+          <label className="text-lg text-gray-700 mb-2">New Password:</label>
           <input
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+            placeholder="Enter new password"
           />
         </div>
-        <div>
-          <label className="block text-gray-700">Confirm New Password:</label>
+        <div className="flex flex-col">
+          <label className="text-lg text-gray-700 mb-2">Confirm New Password:</label>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+            placeholder="Confirm new password"
           />
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded"
+          className="bg-gray-800 hover:bg-gray-700 text-white rounded-md p-3 w-full md:w-auto"
         >
-          Change Password
+          Update
         </button>
       </form>
     </div>

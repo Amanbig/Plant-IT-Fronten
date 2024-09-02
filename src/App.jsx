@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import './App.css'
-import Nav from './components/Nav'
-import SignUp from './pages/auth/SignUp'
-import Homepage from './pages/Homepage'
-import MyAccount from './pages/Myaccount'
-
-
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import Homepage from './pages/Homepage';
+import AboutPage from './pages/About';
+import ContactPage from './pages/Contact';
+import SignUp from './pages/auth/SignUp';
+import MyAccount from './pages/Myaccount';
+import './App.css';
+import Login from './pages/auth/Login';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      {/* <div className='hidden xl:flex flex-row justify-between p-4 text-white bg-black'>
-        <Nav/>
+    <Router>
+      <div className="App">
+        {/* Navbar is included at the top for consistent navigation */}
+        {/* Define routes for each page */}
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/myaccount" element={<MyAccount />} />
+        </Routes>
       </div>
-      <div className="xl:hidden w-full">
-        <MobileNav/>
-      </div> */}
-      {/* <div className='flex justify-center text-center'>
-        <FrontPageSlider/>
-      </div> */}
-      
-        {/* <SignUp/> */}
-        {/* <Login/> */}
-        {/* <Homepage/> */}
-        <MyAccount/>
-      
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

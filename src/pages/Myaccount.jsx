@@ -26,8 +26,8 @@ export default function MyAccount() {
   };
 
   return (
-    <>
-    <div className="flex h-screen bg-gray-100">
+    <div>
+      <div className="flex h-full bg-gray-100 flex-col xl:flex-row">
       <AccountSideNav setActiveSection={setActiveSection} />
       <div className="flex-1 p-6">
         <h1 className="text-3xl font-bold mb-4">Account Settings</h1>
@@ -35,6 +35,7 @@ export default function MyAccount() {
       </div>
     </div>
     <Footer/>
-    </>
+    </div>
+    
   );
 }

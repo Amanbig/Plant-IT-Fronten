@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function AccountSideNav({ setActiveSection }) {
   return (
-    <div className="w-64 h-full bg-gray-800 text-white p-6">
+    <div className="xl:w-64 xl:h-screen bg-gray-800 text-white p-6">
       <h2 className="text-xl font-bold mb-4">Account Settings</h2>
       <ul className="space-y-4">
         <li>

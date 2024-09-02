@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [err,SetErr] = useState(true)
@@ -43,9 +44,9 @@ export default function Login() {
           </button>
           <div className="text-center mt-4">
             Don't Have an Account?{' '}
-            <a className="font-bold" href="#">
+            <Link className="font-bold" to="/signup">
               Sign Up
-            </a>
+            </Link>
           </div>
         </form>
         {err?

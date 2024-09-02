@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaHeart, FaSearch, FaShoppingBag, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +14,9 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="text-2xl font-bold">
-          <a href="#" className="hover:text-gray-300 transition">
+          <Link to="/" className="hover:text-gray-300 transition">
             Fashion Store
-          </a>
+          </Link>
         </div>
 
         {/* Toggle Button for Mobile */}
@@ -33,41 +34,41 @@ export default function Navbar() {
           } md:block`}
         >
           <li>
-            <a href="#" className="block py-2 md:py-0 hover:text-gray-300 transition">
+            <Link to="/" className="block py-2 md:py-0 hover:text-gray-300 transition">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 md:py-0 hover:text-gray-300 transition">
+            <Link to="/shop" className="block py-2 md:py-0 hover:text-gray-300 transition">
               Shop
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 md:py-0 hover:text-gray-300 transition">
+            <Link to="/about" className="block py-2 md:py-0 hover:text-gray-300 transition">
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 md:py-0 hover:text-gray-300 transition">
+            <Link to="/contact" className="block py-2 md:py-0 hover:text-gray-300 transition">
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
 
         {/* Icons Section */}
         <div className="hidden md:flex items-center space-x-4">
-          <a href="#" className="hover:text-gray-300 transition">
+          <Link to="#" className="hover:text-gray-300 transition">
             <FaSearch/>
-          </a>
-          <a href="#" className="hover:text-gray-300 transition">
+          </Link>
+          <Link to="#" className="hover:text-gray-300 transition">
             <FaHeart/>
-          </a>
-          <a href="#" className="hover:text-gray-300 transition">
+          </Link>
+          <Link to="#" className="hover:text-gray-300 transition">
             <FaShoppingBag/>
-          </a>
-          <a href="#" className="hover:text-gray-300 transition">
+          </Link>
+          <Link to="/myaccount" className="hover:text-gray-300 transition">
             <FaUser/>
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

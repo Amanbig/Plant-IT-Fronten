@@ -107,6 +107,6 @@ A page that allows new users to create an account.
 
 For any inquiries or issues, please contact:
 
-- **Your Name** - [amanpreetsinghjhiwant7@gmail.com](mailto:amanpreetsinghjhiwant7@gmail.com)
+- **Email** - [amanpreetsinghjhiwant7@gmail.com](mailto:amanpreetsinghjhiwant7@gmail.com)
 - **GitHub Profile** - [github.com/Amanbig](https://github.com/Amanbig)
 

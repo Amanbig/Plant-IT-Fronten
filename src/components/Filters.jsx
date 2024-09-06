@@ -31,7 +31,7 @@ export default function Filters() {
   return (
     <div className='relative'>
       <button
-        className='md:hidden bg-blue-500 text-white px-2 py-1 rounded-sm mb-2 absolute top-2 right-2 z-10'
+        className='md:hidden bg-blue-500 text-white px-2 py-1 rounded-sm mb-2 top-2 right-2 z-10'
         onClick={() => setIsFiltersVisible(!isFiltersVisible)}
       >
         {isFiltersVisible ? 'Hide' : 'Filters'}

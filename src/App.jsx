@@ -8,13 +8,12 @@ import SignUp from './pages/auth/SignUp';
 import MyAccount from './pages/Myaccount';
 import './App.css';
 import Login from './pages/auth/Login';
+import Shop from './pages/Shop';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* Navbar is included at the top for consistent navigation */}
-        {/* Define routes for each page */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -22,6 +21,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/myaccount" element={<MyAccount />} />
+          <Route path="/shop" element={<Shop />} />
         </Routes>
       </div>
     </Router>

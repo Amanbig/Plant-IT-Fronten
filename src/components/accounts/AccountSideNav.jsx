@@ -1,10 +1,21 @@
 // AccountSideNav.js
 import React from 'react';
+import { FiArrowLeft } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 export default function AccountSideNav({ setActiveSection }) {
+  const navigate = useNavigate();
+  const handleExploreClick = () => {
+    navigate('/'); 
+  };
   return (
     <div className="xl:w-64 xl:h-screen bg-gray-800 text-white p-6">
-      <h2 className="text-xl font-bold mb-4">Account Settings</h2>
+      <div className="flex items-center mb-4 gap-2">
+        <button onClick={handleExploreClick}>
+        <FiArrowLeft className="text-white text-2xl" />
+        </button>
+            <h2 className="text-xl font-bold">Account Settings</h2>
+      </div>
       <ul className="space-y-4">
         <li>
           <button

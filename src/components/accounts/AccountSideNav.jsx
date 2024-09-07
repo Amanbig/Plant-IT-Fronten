@@ -1,55 +1,85 @@
-// AccountSideNav.js
 import React from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function AccountSideNav({ setActiveSection }) {
   const navigate = useNavigate();
+
   const handleExploreClick = () => {
-    navigate('/'); 
+    navigate('/');
   };
+
+  // Animation variants
+  const sidebarVariants = {
+    hidden: { x: '-100%', opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.3 } },
+  };
+
+  const menuItemVariants = {
+    hover: { scale: 1.05, backgroundColor: '#4b5563' },
+    tap: { scale: 0.95 },
+  };
+
   return (
-    <div className="xl:w-64 xl:h-screen bg-gray-800 text-white p-6">
+    <motion.div
+      variants={sidebarVariants}
+      initial="hidden"
+      animate="visible"
+      className="xl:w-64 xl:h-screen bg-gray-800 text-white p-6"
+    >
       <div className="flex items-center mb-4 gap-2">
         <button onClick={handleExploreClick}>
-        <FiArrowLeft className="text-white text-2xl" />
+          <FiArrowLeft className="text-white text-2xl" />
         </button>
-            <h2 className="text-xl font-bold">Account Settings</h2>
+        <h2 className="text-xl font-bold">Account Settings</h2>
       </div>
       <ul className="space-y-4">
         <li>
-          <button
+          <motion.button
             onClick={() => setActiveSection('personal-info')}
-            className="w-full text-left p-2 rounded hover:bg-gray-700"
+            whileHover="hover"
+            whileTap="tap"
+            variants={menuItemVariants}
+            className="w-full text-left p-2 rounded hover:bg-gray-700 transition"
           >
             <i className="fas fa-user mr-2"></i> Personal Information
-          </button>
+          </motion.button>
         </li>
         <li>
-          <button
+          <motion.button
             onClick={() => setActiveSection('addresses')}
-            className="w-full text-left p-2 rounded hover:bg-gray-700"
+            whileHover="hover"
+            whileTap="tap"
+            variants={menuItemVariants}
+            className="w-full text-left p-2 rounded hover:bg-gray-700 transition"
           >
             <i className="fas fa-map-marker-alt mr-2"></i> Addresses
-          </button>
+          </motion.button>
         </li>
         <li>
-          <button
+          <motion.button
             onClick={() => setActiveSection('password-manager')}
-            className="w-full text-left p-2 rounded hover:bg-gray-700"
+            whileHover="hover"
+            whileTap="tap"
+            variants={menuItemVariants}
+            className="w-full text-left p-2 rounded hover:bg-gray-700 transition"
           >
             <i className="fas fa-lock mr-2"></i> Password Manager
-          </button>
+          </motion.button>
         </li>
         <li>
-          <button
+          <motion.button
             onClick={() => setActiveSection('logout')}
-            className="w-full text-left p-2 rounded hover:bg-red-600"
+            whileHover="hover"
+            whileTap="tap"
+            variants={menuItemVariants}
+            className="w-full text-left p-2 rounded hover:bg-red-600 transition"
           >
             <i className="fas fa-sign-out-alt mr-2"></i> Log Out
-          </button>
+          </motion.button>
         </li>
       </ul>
-    </div>
+    </motion.div>
   );
 }

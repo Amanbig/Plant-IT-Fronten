@@ -9,6 +9,7 @@ import MyAccount from './pages/Myaccount';
 import './App.css';
 import Login from './pages/auth/Login';
 import Shop from './pages/Shop';
+import ProductDetailsPage from './pages/ProductDetails';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product_details" element={<ProductDetailsPage />} />
         </Routes>
       </div>
     </Router>

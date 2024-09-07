@@ -88,12 +88,6 @@ export default function Navbar() {
         {/* Icons Section */}
         <div className="hidden xl:flex items-center space-x-4">
           <Link to="#" className="hover:text-gray-300 transition">
-            <FaSearch />
-          </Link>
-          <Link to="#" className="hover:text-gray-300 transition">
-            <FaHeart />
-          </Link>
-          <Link to="#" className="hover:text-gray-300 transition">
             <FaShoppingBag />
           </Link>
           <Link to="/myaccount" className="hover:text-gray-300 transition">

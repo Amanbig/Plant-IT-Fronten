@@ -7,7 +7,6 @@ import Logout from '../components/accounts/LogOut';
 import AccountSideNav from '../components/accounts/AccountSideNav';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { FiArrowLeft } from 'react-icons/fi';
 
 export default function MyAccount() {
   const [activeSection, setActiveSection] = useState('personal-info');

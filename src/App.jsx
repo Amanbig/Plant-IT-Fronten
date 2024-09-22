@@ -10,10 +10,11 @@ import './App.css';
 import Login from './pages/auth/Login';
 import Shop from './pages/Shop';
 import ProductDetailsPage from './pages/ProductDetails';
+import { AuthProvider } from '../context/AuthContext';
 
 function App() {
   return (
-    <Router>
+    <AuthProvider>
       <div className="App">
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -26,7 +27,7 @@ function App() {
           <Route path="/product_details" element={<ProductDetailsPage />} />
         </Routes>
       </div>
-    </Router>
+    </AuthProvider>
   );
 }
 

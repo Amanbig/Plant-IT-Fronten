@@ -16,7 +16,7 @@ export default function Navbar() {
         {/* Logo Section */}
         <div className="text-2xl font-bold">
           <Link to="/" className="hover:text-gray-300 transition">
-            Fashion Store
+            PlantIT
           </Link>
         </div>
 

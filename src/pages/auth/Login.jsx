@@ -1,9 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { AuthContext } from '../../../context/AuthContext';
+import axios from 'axios'
 
 export default function Login() {
-  const [err, SetErr] = useState(true);
+  const [err, SetErr] = useState(false); // Set initial error state to false
+  const [errorMessage, setErrorMessage] = useState(''); // To store error messages
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/api/login', { email, password })
+      .then(response => {
+        // Handle successful login
+        console.log('User logged in:', email);
+        login(response.data.token); // Use the login function from context
+        SetErr(false); // Clear any previous errors on success
+      })
+      .catch(error => {
+        const errorMessage = error.response?.data?.error || 'An error occurred. Please try again.';
+        setErrorMessage(errorMessage); // Set the error message
+        SetErr(true); // Display the error
+        console.error('Error logging in:', errorMessage);
+      });
+  };
 
   // Animation variants
   const fadeIn = {
@@ -26,7 +49,7 @@ export default function Login() {
       >
         <p className="text-start text-2xl font-bold mb-3 text-green-800">Plant IT</p>
         <p className="text-start text-3xl font-bold mb-5">Sign In To Your Account</p>
-        <form>
+        <form onSubmit={handleLogin}>
           <motion.div className="mb-4 flex flex-col" variants={slideUp}>
             <label htmlFor="email" className="text-xl pb-2 font-bold">
               Email Address
@@ -36,6 +59,9 @@ export default function Login() {
               id="email"
               className="border border-black rounded-md p-3"
               placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </motion.div>
           <motion.div className="mb-4 flex flex-col" variants={slideUp}>
@@ -47,6 +73,9 @@ export default function Login() {
               id="password"
               className="border border-black rounded-md p-3"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </motion.div>
           <div className="text-right mb-4">
@@ -74,7 +103,7 @@ export default function Login() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <p>Error: User Not Authenticated</p>
+            <p>{errorMessage}</p>
             <button className="font-bold" onClick={() => SetErr(false)}>
               X
             </button>

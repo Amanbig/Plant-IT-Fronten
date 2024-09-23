@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaBox } from 'react-icons/fa';
 import ProductsCard from '../components/ProductsCard';
 import Footer from '../components/Footer';
 import Navbar from '../components/Nav';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Homepage() {
   const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
 
   // Handler for the explore button click
   const handleExploreClick = () => {
-    navigate('/login');
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      navigate('/shop');
+    }
   };
 
   // Animation variants for different elements
@@ -58,7 +64,7 @@ export default function Homepage() {
             Ultimate Style Destination and Elevate Your Wardrobe Today!
           </motion.div>
           <motion.button
-            type="submit"
+            type="button" // Change type to "button"
             className="bg-gray-800 hover:bg-gray-700 text-white rounded-md text-center p-2 w-full sm:w-40 font-bold text-xl border border-black m-4"
             onClick={handleExploreClick}
             whileHover={{ scale: 1.1 }}

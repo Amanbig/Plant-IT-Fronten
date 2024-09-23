@@ -1,25 +1,72 @@
-// PersonalInfo.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaPencil } from 'react-icons/fa6';
+import axios from 'axios';
 
 export default function PersonalInfo() {
   const [formData, setFormData] = useState({
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'john.doe@example.com',
-    phone: '123-456-7890',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await axios.get('http://localhost:5000/api/users/me', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        // Set form data with fetched user information
+        const { firstname, lastname, email, phone } = response.data;
+        setFormData({
+          first_name: firstname,
+          last_name: lastname,
+          email,
+          phone,
+        });
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        setError('Failed to fetch user data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Personal information updated:', formData);
+    
+    try {
+      const token = localStorage.getItem('authToken');
+      const response = await axios.put(
+        'http://localhost:5000/api/update',
+        formData,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        }
+      );
+      console.log('User information updated:', response.data);
+    } catch (error) {
+      console.error('Error updating user information:', error);
+    }
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
     <div className="p-4">

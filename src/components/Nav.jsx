@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FaHeart, FaSearch, FaShoppingBag, FaUser } from 'react-icons/fa';
 import { FiMenu } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate(); // Use useNavigate for redirection
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleAccountClick = () => {
+    if (!isLoggedIn) {
+      navigate('/login'); // Redirect to login if not logged in
+    }
   };
 
   return (
@@ -28,7 +37,7 @@ export default function Navbar() {
           {isOpen ? (
             <i className="fas fa-times">✕</i> // You can replace with an icon library if desired
           ) : (
-            <FiMenu /> // You can replace with an icon library if desired
+            <FiMenu />
           )}
         </button>
 
@@ -90,7 +99,11 @@ export default function Navbar() {
           <Link to="#" className="hover:text-gray-300 transition">
             <FaShoppingBag />
           </Link>
-          <Link to="/myaccount" className="hover:text-gray-300 transition">
+          <Link
+            to={isLoggedIn ? '/myaccount' : '/login'}
+            className="hover:text-gray-300 transition"
+            onClick={isLoggedIn ? () => setIsOpen(false) : handleAccountClick}
+          >
             <FaUser />
           </Link>
         </div>

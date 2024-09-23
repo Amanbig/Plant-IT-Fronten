@@ -1,5 +1,5 @@
 // MyAccount.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PersonalInfo from '../components/accounts/PersonelInfo';
 import Addresses from '../components/accounts/Addresses';
 import PasswordManager from '../components/accounts/PasswordManager';

@@ -1,24 +1,50 @@
 // PasswordManager.js
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export default function PasswordManager() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (newPassword !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
-    // Handle password change
-    console.log('Password updated');
+
+    try {
+      const token = localStorage.getItem('authToken'); // Get the token from local storage
+
+      const response = await axios.put(
+        'http://localhost:5000/api/change-password',
+        { currentPassword, newPassword },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        }
+      );
+
+      console.log('Password updated:', response.data);
+      // Optionally reset form fields
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      alert('Password updated successfully');
+    } catch (error) {
+      console.error('Error updating password:', error);
+      setErrorMessage('Error updating password. Please check your current password.');
+    }
   };
 
   return (
     <div className="p-4">
       <h2 className="text-2xl font-semibold mb-4">Password Manager</h2>
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col">
           <label className="text-lg text-gray-700 mb-2">Current Password:</label>
@@ -28,6 +54,7 @@ export default function PasswordManager() {
             onChange={(e) => setCurrentPassword(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             placeholder="Enter current password"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -38,6 +65,7 @@ export default function PasswordManager() {
             onChange={(e) => setNewPassword(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             placeholder="Enter new password"
+            required
           />
         </div>
         <div className="flex flex-col">
@@ -48,6 +76,7 @@ export default function PasswordManager() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             placeholder="Confirm new password"
+            required
           />
         </div>
         <button

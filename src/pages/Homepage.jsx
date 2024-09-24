@@ -56,11 +56,11 @@ export default function Homepage() {
             Enjoy 50% OFF in Our Summer Festival Sale!
           </motion.div>
           <motion.div className='m-4 xl:text-5xl text-2xl font-bold text-center' variants={fadeIn}>
-            <p className='xl:mb-4'>Step into Fashion at Your</p>
+            <p className='xl:mb-4'>Step into Nature at Your</p>
             <p className='xl:mt-4'>Ultimate Style Destination!</p>
           </motion.div>
           <motion.div className='m-3 xl:text-xl text-gray-400 text-center' variants={fadeIn}>
-            Explore a World of Fashion Possibilities with Exclusive Discounts - Dive into Your
+            Explore a World of Nature's Beauty Possibilities with Exclusive Discounts - Dive into Your
             Ultimate Style Destination and Elevate Your Wardrobe Today!
           </motion.div>
           <motion.button

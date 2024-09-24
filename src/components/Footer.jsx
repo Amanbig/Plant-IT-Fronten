@@ -70,7 +70,7 @@ export default function Footer() {
           className="flex flex-col"
         >
           <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-          <p className="text-gray-400">Email: info@example.com</p>
+          <p className="text-gray-400">Email: info@plantit.com</p>
           <p className="text-gray-400">Phone: +123 456 7890</p>
           <div className="flex space-x-4 mt-4">
             {/* Social Media Icons */}

@@ -110,3 +110,8 @@ For any inquiries or issues, please contact:
 - **Email** - [amanpreetsinghjhiwant7@gmail.com](mailto:amanpreetsinghjhiwant7@gmail.com)
 - **GitHub Profile** - [github.com/Amanbig](https://github.com/Amanbig)
 
+## Deployments
+
+Here are the deployments:-
+- **FRONTEND** - [PlantIT-fronted](https://plant-it-website.vercel.app)
+- **FULL STACK** - [PLANTIT](https://plant-it-chi.vercel.app/)

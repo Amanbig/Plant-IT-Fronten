@@ -18,7 +18,7 @@ export default function ContactPage() {
     setSuccessMessage('');
     setErrorMessage('');
 
-    axios.post('http://localhost:5000/api/contact', { name, email, message })
+    axios.post('/api/contact', { name, email, message })
       .then(response => {
         console.log('Message sent:', response.data);
         setSuccessMessage('Message sent successfully!');

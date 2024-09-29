@@ -14,7 +14,7 @@ export default function Addresses() {
       setLoading(true);
       try {
         const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:5000/api/addresses', {
+        const response = await axios.get('/api/addresses', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

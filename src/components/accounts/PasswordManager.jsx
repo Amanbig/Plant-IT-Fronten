@@ -20,7 +20,7 @@ export default function PasswordManager() {
       const token = localStorage.getItem('authToken'); // Get the token from local storage
 
       const response = await axios.put(
-        'http://localhost:5000/api/change-password',
+        '/api/change-password',
         { currentPassword, newPassword },
         {
           headers: {
